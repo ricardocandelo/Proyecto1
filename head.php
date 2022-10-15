@@ -7,4 +7,8 @@
     <title>Blog de Nota</title>
 </head>
 <body>
+<?php
+include ("logica/conexion.php");
+include ("logica/Agenda.php");
+?>
     
