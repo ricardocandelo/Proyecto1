@@ -8,7 +8,6 @@
 </head>
 <body>
 <?php
-include ("logica/conexion.php");
-include ("logica/Agenda.php");
+require_once ("logica/Agenda.php");
 ?>
     
