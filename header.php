@@ -10,4 +10,5 @@
 <?php
 require_once ("logica/Agenda.php");
 ?>
+<h1>Esto es el header</h1>
     

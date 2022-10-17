@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2022 a las 00:57:20
+-- Tiempo de generación: 17-10-2022 a las 21:54:23
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.0.19
 
@@ -25,19 +25,19 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `nueva_nota` (IN `titulo` VARCHAR(100), IN `texto` TEXT)   INSERT into note(titulo, texto) values(titulo, texto)$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_edidtar_nota` (IN `param_id` SMALLINT(5), IN `param_titulo` VARCHAR(100), IN `param_texto` TEXT)   BEGIN
 UPDATE note SET titulo = param_titulo, texto = param_texto WHERE note.id = param_id;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_leer` (IN `param_id` SMALLINT(5))   BEGIN
-	SELECT titulo, texto From note WHERE note.id = param_id;
+	SELECT titulo, texto, fecha From note WHERE note.id = param_id;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listar_notas` ()   BEGIN
-	 SELECT titulo, texto, fecha FROM note;
+	 SELECT id, titulo, texto, fecha FROM note;
 END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_nueva_nota` (IN `titulo` VARCHAR(100), IN `texto` TEXT)   INSERT into note(titulo, texto) values(titulo, texto)$$
 
 DELIMITER ;
 
@@ -59,7 +59,8 @@ CREATE TABLE `note` (
 --
 
 INSERT INTO `note` (`id`, `titulo`, `texto`, `fecha`) VALUES
-(4, 'cambio con procedimiento', 'Esto se cambio', '2022-10-11');
+(4, 'cambio con procedimiento', 'Esto se cambio', '2022-10-11'),
+(5, 'nota 2 ', 'veamos que pasa', '2022-10-17');
 
 --
 -- Índices para tablas volcadas
@@ -79,7 +80,7 @@ ALTER TABLE `note`
 -- AUTO_INCREMENT de la tabla `note`
 --
 ALTER TABLE `note`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

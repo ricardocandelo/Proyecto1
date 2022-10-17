@@ -34,12 +34,6 @@
         public function nueva_nota($titulo, $texto){
             $instruccion = "CALL sp_nueva_nota('".$titulo."','".$texto."')";
             $consulta=$this->_db->query($instruccion);
-            $resultado=$consulta->fetch_all(MYSQLI_ASSOC);
-            if($resultado){
-                return $resultado;
-                $resultado->close();
-                $this->_db->close();
-            }
         }
 
         public function eliminar_nota(){
