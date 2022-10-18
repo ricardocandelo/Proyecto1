@@ -19,7 +19,8 @@ include ("header.php");
             <?php
             print("</td>\n");
             echo("<td>" . $actividad['texto'] . "</td>\n");
-            print("<td>" . date("j/n/Y",strtotime($actividad['fecha'])) . "</td>\n");
+            $datetime = new DateTime($actividad['fecha']);
+            print("<td>" . $datetime->format("H:i:s M/d/Y") . "</td>\n");
             print("</tr>\n");
         }
         print("</table>\n");

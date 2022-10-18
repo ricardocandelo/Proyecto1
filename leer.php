@@ -11,7 +11,8 @@ if(array_key_exists('id', $_REQUEST)){
     foreach($actividades as $actividad) {
         print("<td><h2>" . $actividad['titulo'] . "</h2></td>");
         print("<td><p>" . $actividad['texto'] . "</td><br>");
-        print("<td>" . date("j/n/Y",strtotime($actividad['fecha'])) . "</td>");
+        $datetime = new DateTime($actividad['fecha']);
+        print("<td>" . $datetime->format("H:i:s M/d/Y") . "</td>\n");
     }
 ?>
 

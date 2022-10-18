@@ -33,15 +33,19 @@
 
         public function nueva_nota($titulo, $texto){
             $instruccion = "CALL sp_nueva_nota('".$titulo."','".$texto."')";
-            $consulta=$this->_db->query($instruccion);
+            $this->_db->close();
         }
 
-        public function eliminar_nota(){
+        public function eliminar_nota($id){
+            $instruccion = "CALL sp_eliminar('".$id."')";
+            $this->_db->close();
+        }
+
+        public function editar_nota($id){
+            $instruccion = "CALL sp_editar('".$id."')";
+            $this->_db->close();
+        }
             
-        }
-
-        public function editar_nota(){}
-
     }
 
 ?>
