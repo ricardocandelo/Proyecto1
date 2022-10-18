@@ -35,17 +35,18 @@
             $instruccion = "CALL sp_nueva_nota('".$titulo."','".$texto."')";
             $this->_db->close();
         }
+        
 
         public function eliminar_nota($id){
-            $instruccion = "CALL sp_eliminar('".$id."')";
-            $this->_db->close();
+        
+                $instruccion = "CALL sp_eliminar($id)";
+                $this->_db->close();
         }
 
-        public function editar_nota($id){
-            $instruccion = "CALL sp_editar('".$id."')";
+        public function editar_nota($id, $titulo, $texto, $ubicacion, $rango){
+            $instruccion = "CALL sp_editar('".$id."''".$titulo."''".$texto."''".$ubicacion."''".$rango."')";
             $this->_db->close();
-        }
-            
+        }  
     }
 
 ?>
