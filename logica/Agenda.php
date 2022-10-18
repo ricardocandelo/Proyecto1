@@ -40,7 +40,10 @@
         public function eliminar_nota($id){
         
                 $instruccion = "CALL sp_eliminar($id)";
-                $this->_db->close();
+                $stmt = $this->_db->prepare($instruccion);
+                $stmt->execute();
+                print "Se elimino corectamente ";
+                
         }
 
         public function editar_nota($id, $titulo, $texto, $ubicacion, $rango){
