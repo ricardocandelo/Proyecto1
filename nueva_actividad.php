@@ -23,8 +23,8 @@
     require_once("logica/Agenda.php");
     if(array_key_exists('Agregar', $_POST)) {
         $obj_agenda = new blognote();
-        $obj_agenda->nueva_nota($_REQUEST['titulo'], $_REQUEST['texto'], $_REQUEST['texto'], $_REQUEST['rango'], $_REQUEST['actividad']);
-    print("<p>Se ha agregado la nueva actividad.</p>\n\n");
+        $obj_agenda->nueva_nota($_REQUEST['titulo'], $_REQUEST['texto'], $_REQUEST['ubicacion'], $_REQUEST['rango'], $_REQUEST['actividad']);
+        echo '<script>alert("Se agrego correcatmenet")</script>';
 }
 
 ?>

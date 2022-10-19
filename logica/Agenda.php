@@ -36,12 +36,6 @@
             $stmt = $this->_db->prepare($instruccion);
             $stmt->bind_param("sssss", $titulo, $texto, $ubicacion, $rango, $actividad);
             $stmt->execute();
-            if ($stmt){
-                echo '<script>alert("Se agrego correcatmenet")</script>';
-                ?>
-                <a href="index.php"><input type="button" value="VOLVER"></a>
-                <?php
-            }
         }
         
 

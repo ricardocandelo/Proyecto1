@@ -11,11 +11,11 @@ if(array_key_exists('id', $_REQUEST)){
         print("<td><h1>" . $actividad['titulo'] . "</h1></td>");
         print("<td><p><h2>" . $actividad['tipo_actividad'] . "</h2></td>");
         print("<td><p>" . $actividad['texto'] . "</td><br><br>");
-        print("<td>Ubicacion" . $actividad['ubicacion'] . "</td><br>");
+        print("<td><b>Ubicacion:</b> &nbsp&nbsp " . $actividad['ubicacion'] . "</td><br>");
         $datetimerange = new DateTime($actividad['rango']);
-        print("<td> Actividad para el &nbsp" . $datetimerange->format("Y/M/d") . "</td><br>");
+        print("<td><b>Actividad para el:</b> &nbsp" . $datetimerange->format("d/M/Y") . "</td><br>");
         $datetime = new DateTime($actividad['fecha']);
-        print("<td> Creada el &nbsp" . $datetime->format("Y/M/d") . "</td><br>");
+        print("<td><b>Creada el:</b> &nbsp" . $datetime->format("d/M/Y") . "</td><br>");
     }
     ?>
     <br><br>

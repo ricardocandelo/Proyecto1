@@ -18,7 +18,7 @@ include ("header.php");
             <input type="text" name="titulo" value="<?php echo("" . $actividad['titulo'] . ""); ?>">
             <input type="text" name="texto" value="<?php echo("" . $actividad['texto'] . ""); ?>">
             <input type="text" name="ubicacion" value="<?php echo("" . $actividad['ubicacion'] . ""); ?>">
-            <input type="date" name="rango" value="<?php echo("" . $actividad['rango'] . ""); ?>">
+            <input type="date" name="rango" value="<?php echo("".($actividad['rango']).""); ?>">
             <input type="submit" name="edita" value="Editar">
             </form>
         <?php

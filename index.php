@@ -11,8 +11,6 @@ include ("header.php");
         print("<th>&nbsp Titulo</th>\n");
         print("<th>&nbsp Actividad</th>\n");
         print("<th>&nbsp Texto</th>\n");
-        print("<th>&nbsp Ubicacion</th>\n");
-        print("<th>&nbsp Creado el</th>\n");
         print("<th>&nbsp Programado para el &nbsp</th>\n");
         print("</tr>\n");
 
@@ -23,11 +21,8 @@ include ("header.php");
             print("&nbsp</td>\n");
             print("<td> &nbsp" . $actividad['tipo_actividad'] . "&nbsp</td>\n");
             print("<td> &nbsp" . $actividad['texto'] . "&nbsp</td>\n");
-            print("<td> &nbsp" . $actividad['ubicacion'] . " &nbsp</td>\n");
-            $datetime = new DateTime($actividad['fecha']);
-            print("<td> &nbsp  " . $datetime->format("Y/M/d") . "&nbsp</td>\n");
             $datetimerange = new DateTime($actividad['rango']);
-            print("<td>&nbsp" . $datetimerange->format("Y/M/d") . "&nbsp</td>\n");
+            print("<td>&nbsp" . $datetimerange->format("d/M/Y") . "&nbsp</td>\n");
             print("</tr>\n");
         }
         print("</table>\n");
