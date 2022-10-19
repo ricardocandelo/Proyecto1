@@ -8,12 +8,17 @@ if(array_key_exists('id', $_REQUEST)){
 }
 
     foreach($actividades as $actividad) {
-        print("<td><h2>" . $actividad['titulo'] . "</h2></td>");
-        print("<td><p>" . $actividad['texto'] . "</td><br>");
+        print("<td><h1>" . $actividad['titulo'] . "</h1></td>");
+        print("<td><p><h2>" . $actividad['tipo_actividad'] . "</h2></td>");
+        print("<td><p>" . $actividad['texto'] . "</td><br><br>");
+        print("<td>Ubicacion" . $actividad['ubicacion'] . "</td><br>");
+        $datetimerange = new DateTime($actividad['rango']);
+        print("<td> Actividad para el &nbsp" . $datetimerange->format("Y/M/d") . "</td><br>");
         $datetime = new DateTime($actividad['fecha']);
-        print("<td>" . $datetime->format("H:i:s M/d/Y") . "</td>\n");
+        print("<td> Creada el &nbsp" . $datetime->format("Y/M/d") . "</td><br>");
     }
     ?>
+    <br><br>
     <a href="eliminar.php?id=<?php echo $id ?>"><input type="button" value="ELIMINAR"></a>
     <a href="editar.php?id=<?php echo $id ?>"><input type="button" value="EDITAR"></a>
     <?php

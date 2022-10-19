@@ -11,5 +11,12 @@
 <?php
 require_once ("logica/Agenda.php");
 ?>
-<h1>Esto es el header</h1>
+<nav class="nav">
+<ul class="nav_ul">
+    <li class="nav__ul-li"><a href="index.php"><h1>AGENDA</h1></a></li>
+    <li class="nav__ul-li"><a href="nueva_actividad.php">Nueva actividad</a></li>
+    <li class="nav__ul-li"><a href="#">reporte</a></li>
+</ul>
+</nav>
+
     

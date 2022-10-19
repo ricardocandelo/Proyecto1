@@ -8,19 +8,26 @@ include ("header.php");
     if($nfilas > 0) {
         print("<table>\n");
         print("<tr>\n");
-        print("<th>Titulo</th>\n");
-        print("<th>Texto</th>\n");
-        print("<th>Fecha</th>\n");
+        print("<th>&nbsp Titulo</th>\n");
+        print("<th>&nbsp Actividad</th>\n");
+        print("<th>&nbsp Texto</th>\n");
+        print("<th>&nbsp Ubicacion</th>\n");
+        print("<th>&nbsp Creado el</th>\n");
+        print("<th>&nbsp Programado para el &nbsp</th>\n");
         print("</tr>\n");
 
         foreach($actividades as $actividad) {
             print("<tr>\n");
-            print("<tr>\n<td>")?><a href="leer.php?id=<?php echo $actividad['id']?>"><?php echo $actividad['titulo']?></a> 
+            print("<tr>\n<td> &nbsp")?><a href="leer.php?id=<?php echo $actividad['id']?>"><?php echo $actividad['titulo']?></a> 
             <?php
-            print("</td>\n");
-            echo("<td>" . $actividad['texto'] . "</td>\n");
+            print("&nbsp</td>\n");
+            print("<td> &nbsp" . $actividad['tipo_actividad'] . "&nbsp</td>\n");
+            print("<td> &nbsp" . $actividad['texto'] . "&nbsp</td>\n");
+            print("<td> &nbsp" . $actividad['ubicacion'] . " &nbsp</td>\n");
             $datetime = new DateTime($actividad['fecha']);
-            print("<td>" . $datetime->format("H:i:s M/d/Y") . "</td>\n");
+            print("<td> &nbsp  " . $datetime->format("Y/M/d") . "&nbsp</td>\n");
+            $datetimerange = new DateTime($actividad['rango']);
+            print("<td>&nbsp" . $datetimerange->format("Y/M/d") . "&nbsp</td>\n");
             print("</tr>\n");
         }
         print("</table>\n");
@@ -32,5 +39,5 @@ include ("header.php");
     ?>
 
 <?php
-include ("footer.php");
+include ("footer_index.php");
 ?>
