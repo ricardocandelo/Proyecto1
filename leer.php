@@ -14,8 +14,8 @@ if(array_key_exists('id', $_REQUEST)){
         print("<td>" . $datetime->format("H:i:s M/d/Y") . "</td>\n");
     }
     ?>
-    <a href="eliminar.php?id=<?php echo $id ?>">Eliminar</a>
-<   <a href="editar.php?id=<?php echo $id ?>">editar</a>
+    <a href="eliminar.php?id=<?php echo $id ?>"><input type="button" value="ELIMINAR"></a>
+    <a href="editar.php?id=<?php echo $id ?>"><input type="button" value="EDITAR"></a>
     <?php
 }else {
     print"No hay regitro";

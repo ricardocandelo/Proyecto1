@@ -31,9 +31,11 @@
             }
         }
 
-        public function nueva_nota($titulo, $texto){
-            $instruccion = "CALL sp_nueva_nota('".$titulo."','".$texto."')";
-            $this->_db->close();
+        public function nueva_nota($titulo, $texto, $ubicacion, $rango){
+            $instruccion = "CALL sp_nueva_nota('".$titulo."','".$texto."','".$ubicacion."','".$rango."')";
+            print_r($instruccion);
+            $stmt = $this->_db->prepare($instruccion);
+            $stmt->execute();
         }
         
 
@@ -48,7 +50,9 @@
 
         public function editar_nota($id, $titulo, $texto, $ubicacion, $rango){
             $instruccion = "CALL sp_editar('".$id."''".$titulo."''".$texto."''".$ubicacion."''".$rango."')";
-            $this->_db->close();
+            $stmt = $this->_db->prepare($instruccion);
+            $stmt->execute();
+            print_r($id);
         }  
     }
 
