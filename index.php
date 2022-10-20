@@ -38,13 +38,14 @@ if(isset($actividades)){
 
         foreach($actividades as $actividad) {
             print("<tr>\n");
-            print("<tr>\n<td> &nbsp")?><a href="leer.php?id=<?php echo $actividad['id']?>"><?php echo $actividad['titulo']?></a> 
-            <?php
-            print("&nbsp</td>\n");
+            print("<tr>\n<td> &nbsp".$actividad['titulo']."&nbsp</td>\n");
             print("<td> &nbsp" . $actividad['tipo_actividad'] . "&nbsp</td>\n");
             print("<td> &nbsp" . $actividad['texto'] . "&nbsp</td>\n");
             $datetimerange = new DateTime($actividad['rango']);
             print("<td>&nbsp" . $datetimerange->format("d/M/Y") . "&nbsp</td>\n");
+            print("<td> &nbsp")?><a href="leer.php?id=<?php echo $actividad['id']?>"><input type="button" value="VER MAS"></a> 
+            <?php
+             print("&nbsp</td>\n");
             print("</tr>\n");
         }
         print("</table>\n");
