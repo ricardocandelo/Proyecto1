@@ -12,7 +12,7 @@
     <option value="pHogar">Pendientes del Hogar</option>
     </select><br><br><br>
     Titulo: <input type="text" name="titulo"><br><br><br>
-    Texto: <input type="text" name="texto"><br><br><br>
+    <textarea name="texto" id="" cols="30" rows="10"></textarea><br><br><br>
     Ubicacion: <input type="text" name="ubicacion"><br><br><br>
     Fecha: <input type="date" name="rango" value="aaaa-mm-dd"><br><br><br>
     <input type="submit" name="Agregar" value="Agregar">

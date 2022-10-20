@@ -16,9 +16,12 @@ include ("header.php");
             <form action="editar.php" method="post">
             <input type="hidden" name="id" value="<?php echo $_REQUEST['id'] ?>">
             <input type="text" name="titulo" value="<?php echo("" . $actividad['titulo'] . ""); ?>">
-            <input type="text" name="texto" value="<?php echo("" . $actividad['texto'] . ""); ?>">
+            <br><br>
+            <textarea name="texto" id="" cols="30" rows="10"><?php echo("" . $actividad['texto'] . ""); ?></textarea>
+            <br><br>
             <input type="text" name="ubicacion" value="<?php echo("" . $actividad['ubicacion'] . ""); ?>">
             <input type="date" name="rango" value="<?php echo("".($actividad['rango']).""); ?>">
+            <br><br>
             <input type="submit" name="edita" value="Editar">
             </form>
         <?php
