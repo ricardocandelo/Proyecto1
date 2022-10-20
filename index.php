@@ -14,14 +14,14 @@ include ("header.php");
     </form>
 <?php
 
- $obj_agenda = new blognote();
+ $obj_agenda = new agenda();
     $actividades = $obj_agenda->listar_notas();
     if(array_key_exists('ConsultarTodos', $_POST)){
-        $obj_actividad = new blognote();
+        $obj_actividad = new agenda();
         $agenda_new = $obj_actividad->listar_notas();
     }
     if(array_key_exists('ConsultarFiltro', $_POST)){
-        $obj_agenda = new blognote();
+        $obj_agenda = new agenda();
         $actividades = $obj_agenda->filtrar_actividad($_REQUEST['campos'], $_REQUEST['valor']);
     }
 if(isset($actividades)){

@@ -1,6 +1,13 @@
 <?php
     require_once('conexion.php');
-    class blognote extends modeloCredencialesDB{
+    class agenda extends modeloCredencialesDB{
+        protected $id;
+        protected $titulo;
+        protected $texto;
+        protected $actividad;
+        protected $fecha;
+        protected $rango;
+        protected $rango_final;
 
         public function __autoload() {
             parent::__construct();
@@ -31,30 +38,25 @@
             }
         }
 
-        public function nueva_nota($titulo, $texto, $ubicacion, $rango, $actividad){
-            $instruccion = "CALL sp_nueva_nota(?, ?, ?, ?, ?)";
+        public function nueva_nota($titulo, $texto, $ubicacion, $rango, $actividad, $rango_final){
+            $instruccion = "CALL sp_nueva_nota(?, ?, ?, ?, ?, ?)";
             $stmt = $this->_db->prepare($instruccion);
-            $stmt->bind_param("sssss", $titulo, $texto, $ubicacion, $rango, $actividad);
+            $stmt->bind_param("ssssss", $titulo, $texto, $ubicacion, $rango, $actividad, $rango_final);
             $stmt->execute();
         }
         
 
         public function eliminar_nota($id){
-                
                 $instruccion = "CALL sp_eliminar($id)";
                 $stmt = $this->_db->prepare($instruccion);
                 $stmt->execute();
-                echo '<script>alert("Se elimino correctamente")</script>';
-                ?>
-                <a href="index.php"><input type="button" value="VOLVER"></a>
-                <?php
                 
         }
 
-        public function editar_nota($id, $titulo, $texto, $ubicacion, $rango){
-            $instruccion = "CALL sp_editar(?, ?, ?, ?, ?)";
+        public function editar_nota($id, $titulo, $texto, $ubicacion, $rango, $actividad, $rango_final){
+            $instruccion = "CALL sp_editar(?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->_db->prepare($instruccion);
-            $stmt->bind_param("issss",$id, $titulo, $texto, $ubicacion, $rango);
+            $stmt->bind_param("issssss",$id, $titulo, $texto, $ubicacion, $rango, $actividad, $rango_final);
             $stmt->execute();
             if ($stmt){
                 header("Location: leer.php?id=$id");
