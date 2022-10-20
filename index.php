@@ -1,8 +1,30 @@
 <?php
 include ("header.php");
+?>
+    <form name="FormFiltro" action="index.php" method="post">
+        <br>
+        Buscar por: <select name="campos">
+            <option value="tipo_actividad" selected>Atividad</option>
+            <option value="titulo">Titulo</option>
+            <option value="texto">Texto</option>
+        </select>
+        <input type="text" name="valor">
+        <input type="submit" value="Filtrar Datos" name="ConsultarFiltro">
+        <input type="submit" value="Ver Todos" name="ConsultarTodos">
+    </form>
+<?php
+
  $obj_agenda = new blognote();
     $actividades = $obj_agenda->listar_notas();
-
+    if(array_key_exists('ConsultarTodos', $_POST)){
+        $obj_actividad = new blognote();
+        $agenda_new = $obj_actividad->listar_notas();
+    }
+    if(array_key_exists('ConsultarFiltro', $_POST)){
+        $obj_agenda = new blognote();
+        $actividades = $obj_agenda->filtrar_actividad($_REQUEST['campos'], $_REQUEST['valor']);
+    }
+if(isset($actividades)){
     $nfilas = count($actividades);
 
     if($nfilas > 0) {
@@ -30,6 +52,8 @@ include ("header.php");
     } else {
         print("No tiene actividades registradas.");
     }
+}else { print("No hay registro");
+}
 
     ?>
 

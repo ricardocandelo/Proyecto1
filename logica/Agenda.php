@@ -60,6 +60,17 @@
                 header("Location: leer.php?id=$id");
             }
         }  
+
+        public function filtrar_actividad($campo, $valor){ 
+            $instruccion = "CALL sp_filtrar_actividad('".$campo."','".$valor."')";
+            $consulta=$this->_db->query($instruccion);
+            $resultado=$consulta->fetch_all(MYSQLI_ASSOC);
+            if($resultado){
+                return $resultado;
+                $resultado->close();
+                $this->_db->close();
+            }
+        }   
     }
 
 ?>
