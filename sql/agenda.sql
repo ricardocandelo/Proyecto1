@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2022 a las 17:39:25
+-- Tiempo de generación: 20-10-2022 a las 20:13:43
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.0.19
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `agenda`
+-- Base de datos: `blognote`
 --
 
 DELIMITER $$
@@ -38,6 +38,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_eliminar` (IN `ide` SMALLINT(5))
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
 end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_filtrar_actividad` (IN `param_campo` VARCHAR(250), IN `param_valor` VARCHAR(250))   BEGIN
+
+	SET @s = CONCAT("SELECT id, titulo, tipo_actividad, texto, ubicacion, fecha, rango FROM note WHERE ", param_campo ," LIKE CONCAT('%", param_valor ,"%')");
+    PREPARE stmt FROM @s;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_leer` (IN `param_id` SMALLINT(5))   BEGIN
 	SELECT id, titulo, texto, fecha, ubicacion, rango, tipo_actividad From note WHERE note.id = param_id;
@@ -74,11 +82,8 @@ CREATE TABLE `note` (
 --
 
 INSERT INTO `note` (`id`, `titulo`, `tipo_actividad`, `texto`, `fecha`, `ubicacion`, `rango`) VALUES
-(4, 'Prueba de editar', 'Tipod de actividad no especificada', 'Estoy probando si esta vaina funciona o no', '2022-10-11 00:00:00', 'Nuevo campo', '2022-10-18 00:00:00'),
-(15, 'A ver si coloca bien la fecha', '2022-10-15', 'Estudios', '2022-10-19 09:29:02', 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm', '2022-10-21 00:00:00'),
-(25, 'msm', 'prueba', 'editada', '2022-10-19 10:26:42', 'mmmmsm', '2022-10-23 00:00:00'),
-(27, 'na', 'Trabajo', 'msms', '2022-10-19 10:29:24', 'msms', '2022-10-21 00:00:00'),
-(28, 'mms', 'Trabajo', 'sns', '2022-10-19 10:30:37', 'sns', '2022-10-23 00:00:00');
+(37, 'Priekje', 'Trabajo', 'nsnsnns', '2022-10-19 18:37:47', 'snjsnsnn', '2022-10-21 00:00:00'),
+(38, 'hola', 'Trabajo', 'nasns', '2022-10-19 18:38:42', 'nsnas', '2022-10-19 00:00:00');
 
 --
 -- Índices para tablas volcadas
@@ -98,7 +103,7 @@ ALTER TABLE `note`
 -- AUTO_INCREMENT de la tabla `note`
 --
 ALTER TABLE `note`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
